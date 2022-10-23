@@ -1,0 +1,32 @@
+NAMESPACE: skyant.rest
+MODULES:
+    -   skyant.rest
+VERSION: 0.1
+
+DESCR: Preconfigured FastAPI
+KEYWORDS: fastapi, api, rest
+
+HOME: https://skyant.dev/projects/rest
+DONATE: https://buymeacoffee.com/skyantdev
+NEWS: https://twitter.com/skyantdev
+TALK: https://gitter.im/skyantdev/rest
+
+
+AUTHOR: Iurii Tarasenko
+EMAIL: info@skyant.dev
+
+
+PYTHON_REQ: '>=3.10'
+REQUIREMENTS:
+    -   fastapi
+    -   email-validator
+    -   pydantic
+    -   google.auth
+    -   hypercorn
+    -   pyyaml
+
+CLASSIFIERS:
+    -   'Programming Language :: Python :: 3.10'
+    -   'Intended Audience :: Developers'
+    -   'Intended Audience :: Information Technology'
+    -   'Topic :: Software Development :: Libraries :: Python Modules'
