@@ -1,8 +1,8 @@
-site_name: REST App SkyANT
+site_name: REST SkyANT
 
 docs_dir: .docs
-repo_url: https://gitlab.com/skyant/rest/app
-repo_name: rest/app
+repo_url: https://gitlab.com/skyant/python/rest
+repo_name: skyant/python/rest
 edit_uri: ""
 
 theme: 
