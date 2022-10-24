@@ -7,7 +7,7 @@ from pathlib import Path
 import yaml
 from setuptools import find_packages, setup
 
-with open('setup.yml', 'r', encoding='utf-8') as vars_file:
+with open('./setup.yml', 'r', encoding='utf-8') as vars_file:
     conf = yaml.safe_load(vars_file)
 
 kwargs = {
@@ -24,6 +24,9 @@ kwargs = {
     'classifiers': conf['CLASSIFIERS'],
     'install_requires': conf['REQUIREMENTS']
 }
+
+if 'LICENSE' in conf:
+    kwargs['license'] = conf['LICENSE']
 
 if Path('README.md').is_file():
 
