@@ -1,5 +1,6 @@
-NAMESPACE: skyant.rest.app
+NAMESPACE: skyant.rest
 MODULES:
+    -   skyant.rest
     -   skyant.rest.app
 
 VERSION: 1.0
