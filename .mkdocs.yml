@@ -1,9 +1,20 @@
-site_name: REST SkyANT
+nav:
 
-docs_dir: .docs
+    - 'HOME': index.md
+    - 'QUICK START': start.md
+    - 'APP': app.md
+
+
+site_name: skyant.rest
 repo_url: https://gitlab.com/skyant/python/rest
 repo_name: skyant/python/rest
+
+
+
+
+docs_dir: .docs
 edit_uri: ""
+
 
 theme: 
     name: material
@@ -23,6 +34,8 @@ theme:
         - navigation.tabs
         - navigation.tabs.sticky
 
+
+copyright: Copyright &copy; 2020 Iurii Tarasenko
 extra:
     generator: true
     homepage: https://skyant.dev
@@ -31,19 +44,21 @@ extra:
         
         - icon: fontawesome/solid/sack-dollar
           link: https://buymeacoffee.com/skyantdev
-          name: Donate us
+          name: donation
         
-        - icon: fontawesome/brands/twitter
-          link: https://twitter.com/skyantdev
-          name: SkyANT on Twitter
+        - icon: fontawesome/brands/linkedin
+          link: https://www.linkedin.com/company/skyantdev
+          name: news
 
-        - icon: fontawesome/solid/comment
-          link: https://gitter.com/skyantdev/rest
-
+        - icon: fontawesome/solid/user-group
+          link: https://groups.google.com/a/skyant.dev/g/community?label=rest
+          name: community
 
 
 extra_css:
     - https://skyant.dev/static/css/skyant.css
+    - https://skyant.dev/static/css/hide-title.css
+    - https://skyant.dev/static/css/hide-versions.css
 
 
 plugins:
@@ -56,11 +71,5 @@ plugins:
                     show_root_toc_entry: true
                     show_bases: false
                     show_category_heading: false
-    - search:
-        indexing: 'full'
-
-
-nav:
-
-    - 'HOME': index.md
-    - 'APP': app.md
+    - search
+    - section-index

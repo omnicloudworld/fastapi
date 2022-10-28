@@ -1,6 +1,7 @@
 ---
 hide:
     - navigation
+    - footer
 ---
 
 # skyant.rest.app.App
