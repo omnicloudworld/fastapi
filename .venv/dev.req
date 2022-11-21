@@ -95,6 +95,7 @@ traitlets==5.5.0
 twine==4.0.1
 typing_extensions==4.4.0
 urllib3==1.26.12
+uvicorn
 wcwidth==0.2.5
 webencodings==0.5.1
 Werkzeug==2.2.2

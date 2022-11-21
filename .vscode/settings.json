@@ -28,9 +28,11 @@
     "terminal.integrated.defaultProfile.linux": "local",
     "cSpell.words": [
         "fastapi",
+        "linenums",
         "mkdocstrings",
         "redoc",
-        "sdoc"
+        "sdoc",
+        "uvicorn"
     ]
 
 }

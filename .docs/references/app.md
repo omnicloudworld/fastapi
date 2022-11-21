@@ -3,6 +3,6 @@ hide:
     - navigation
 ---
 
-# skyant.rest.app.ReDoc
+# skyant.rest.app.BaseURL
 
-::: skyant.rest.app.ReDoc
+::: skyant.rest.app.BaseURL

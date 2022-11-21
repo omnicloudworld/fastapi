@@ -1,11 +1,13 @@
 # pylint: disable=missing-docstring
 
+import re
 from os import environ as env
-from fastapi import FastAPI, APIRouter
-from fastapi.responses import RedirectResponse
+from warnings import warn
+
+from fastapi import APIRouter, FastAPI
 
 
-class ReDoc(FastAPI):
+class BaseURL(FastAPI):
     '''
     Inherited from FastAPI class ReDoc have a predefined router to documentation from redoc library.
 
@@ -23,14 +25,9 @@ class ReDoc(FastAPI):
 
         contact: Support team contacts. Have to has name and email in dictionary format.
 
-        redoc: Path to display OpenAPI documentation from redoc library. Default is '/doc'.
-            The class will be redirected GET request from '/' to this path.
-
-        sdoc: Path for displaying classic OpenAPI documentation. It can't be equal redoc.
+        base_url: Path prefix.
 
         debug: Debugging flag.
-
-        route2redoc: Flag for adding a redirection from the root to the redoc path.
 
         **kw: Additional arguments from FastAPI class.
     '''
@@ -41,45 +38,45 @@ class ReDoc(FastAPI):
         description: str,
         version: str,
         contact: dict,
-        redoc: str | None = '/doc',
-        sdoc: str | None = None,
+        base_url: str | None = None,
         debug: bool = False,
-        route2redoc: bool = True,
         **kw
     ):
 
-        assert redoc != '/', 'Parameter \'redoc\' can\'t be root.'
-        assert sdoc != '/', 'Parameter \'sdoc\' can\'t be root.'
-        assert redoc != sdoc, 'ReDoc & Simple Doc shouldn\'t be equal.'
-
-        if 'SIMPLE_DOC' in env and env['SIMPLE_DOC'] != redoc:
-            sdoc = env.get('SIMPLE_DOC', sdoc)  # env vars have priority
         debug = bool(env.get('DEBUG_API', debug))  # env vars have priority
+
+        pattern = re.compile(r'^\/[\-a-zA-Z0-9\(\)\_\+\.\#\?\&\=]+(\/[\-a-zA-Z0-9\(\)\_\+\.\#\?\&\=]+)*$')
+        path = str(base_url or env.get('BASE_URL', ''))
+
+        if not re.match(pattern, path) and path != '':
+            warn('Wrong BASE_URL value! $BASE_URL will used as "" value.')
+            path = ''
+
+        redoc_url = path if path != '' else '/'
+        openapi_url = f'{path}/openapi.json' if path != '' else '/openapi.json'
 
         super().__init__(
             title=title,
             description=description,
             version=version,
             contact=contact,
-            redoc_url=redoc,
-            docs_url=sdoc,
+            redoc_url=redoc_url,
+            openapi_url=openapi_url,
             debug=debug,
             **kw
         )
 
-        if redoc and redoc != '' and route2redoc:
+        self._base_router = APIRouter(prefix=path)
 
-            route = APIRouter(
-                prefix=''
-            )
+        self.include_router(self._base_router)
 
-            @route.get(
-                '/',
-                response_class=RedirectResponse, status_code=301, include_in_schema=False
-            )
-            async def redirector():
-                '''
-                '''
-                return redoc
+    def add2base(self, router: APIRouter):
+        '''
+        Added router behind `BASE_URL` path.
 
-            self.include_router(route)
+        Args:
+            router: Instance of defined router.
+        '''
+
+        self._base_router.include_router(router)
+        self.include_router(self._base_router)

@@ -1,47 +1,24 @@
 #!/usr/bin/env python3.10
 
-'''
-'''
+import uvicorn
+from fastapi import Request, APIRouter
+from skyant.rest.app import BaseURL
 
-from fastapi import APIRouter
-from fastapi import status
-from skyapp.api.platform import SkyAPI, CamelModel
-from pydantic import (
-    Field
+server = BaseURL(
+    'DEMO',
+    version='0.0',
+    contact={'name': 'SkyANT', 'email': 'info@skyant.dev'},
+    description='Demo APP'
 )
 
-app = SkyAPI(
-    'TEST-SSS',
-    'description',
-    'version',
-    contact={'name': 'sdsd', 'email': 'sdsdsds@sgrg.rr'},
-    debug=True,
-    sdoc='/sdoc'
-)
+router = APIRouter()
+
+@router.get("/app")
+def read_main(request: Request):
+    return {"message": "Hello World", "root_path": request.scope.get("root_path")}
 
 
-route = APIRouter(
-    prefix='/test',
-    tags=['test']
-)
-
-
-class TModel(CamelModel):
-    task_id: str = Field(
-        ...,
-        title='ID of processed task'
-    )
-
-
-@route.post('/t1', operation_id="test", include_in_schema=False)
-@route.post('/t1/', operation_id="test", response_model=TModel, status_code=status.HTTP_202_ACCEPTED)
-async def import_file_data(import_data: TModel):
-    return {'task_id': 'wefref3fer'}
-
-app.include_router(route)
-
+server.add2base(router)
 
 if __name__ == '__main__':
-    import uvicorn
-
-    uvicorn.run(app, port=8008)
+    uvicorn.run(server, port=8008, host='0.0.0.0')
