@@ -3,7 +3,7 @@ MODULES:
     -   skyant.rest
     -   skyant.rest.app
 
-VERSION: 1.0
+VERSION: 1.1
 
 DESCR: Preconfigured FastAPI
 KEYWORDS: fastapi, api, rest
@@ -28,6 +28,7 @@ REQUIREMENTS:
     -   google.auth
     -   hypercorn
     -   pyyaml
+    -   uvicorn
 
 CLASSIFIERS:
     -   'Programming Language :: Python :: 3.10'
