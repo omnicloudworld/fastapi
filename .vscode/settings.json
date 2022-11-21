@@ -25,6 +25,12 @@
             ]
         }
     },
-    "terminal.integrated.defaultProfile.linux": "local"
+    "terminal.integrated.defaultProfile.linux": "local",
+    "cSpell.words": [
+        "fastapi",
+        "mkdocstrings",
+        "redoc",
+        "sdoc"
+    ]
 
 }

@@ -5,7 +5,7 @@ from fastapi import FastAPI, APIRouter
 from fastapi.responses import RedirectResponse
 
 
-class App(FastAPI):
+class ReDoc(FastAPI):
     '''
     Inherited from FastAPI class ReDoc have a predefined router to documentation from redoc library.
 
@@ -26,9 +26,11 @@ class App(FastAPI):
         redoc: Path to display OpenAPI documentation from redoc library. Default is '/doc'.
             The class will be redirected GET request from '/' to this path.
 
-        sdoc: Path for displaying classic OpenAPI documentation. Default is None. It can't be equal redoc.
+        sdoc: Path for displaying classic OpenAPI documentation. It can't be equal redoc.
 
-        debug: Debugging flag. Default is False.
+        debug: Debugging flag.
+
+        route2redoc: Flag for adding a redirection from the root to the redoc path.
 
         **kw: Additional arguments from FastAPI class.
     '''
@@ -39,9 +41,10 @@ class App(FastAPI):
         description: str,
         version: str,
         contact: dict,
-        redoc: str = '/doc',
-        sdoc: str = None,
+        redoc: str | None = '/doc',
+        sdoc: str | None = None,
         debug: bool = False,
+        route2redoc: bool = True,
         **kw
     ):
 
@@ -64,7 +67,7 @@ class App(FastAPI):
             **kw
         )
 
-        if redoc and redoc != '':
+        if redoc and redoc != '' and route2redoc:
 
             route = APIRouter(
                 prefix=''

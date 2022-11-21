@@ -1,38 +1,17 @@
 nav:
 
     - 'HOME': index.md
-    - 'QUICK START': start.md
     - 'APP': app.md
+
+    - 'REFERENCES':
+        - references/index.md
+        - 'app': references/app.md
 
 
 site_name: skyant.rest
 repo_url: https://gitlab.com/skyant/python/rest
 repo_name: skyant/python/rest
 
-
-
-
-docs_dir: .docs
-edit_uri: ""
-
-
-theme: 
-    name: material
-    favicon: https://skyant.dev/assets/icons/558614-512-3.png
-    logo: https://skyant.dev/assets/icons/558614.svg
-    palette:
-        primary: amber
-        accent: deep purple
-    font:
-        text: Montserrat
-        code: Roboto Mono
-    icon:
-        repo: fontawesome/brands/gitlab
-    features:
-        - search.highlight
-        - search.suggest
-        - navigation.tabs
-        - navigation.tabs.sticky
 
 
 copyright: Copyright &copy; 2020 Iurii Tarasenko
@@ -55,6 +34,37 @@ extra:
           name: community
 
 
+
+
+###
+#  Template
+###
+
+
+docs_dir: .docs
+edit_uri: ""
+
+
+theme: 
+    name: material
+    favicon: https://skyant.dev/assets/icons/558614-512-3.png
+    logo: https://skyant.dev/assets/icons/558614.svg
+    palette:
+        primary: amber
+        accent: deep purple
+    font:
+        text: Montserrat
+        code: Roboto Mono
+    icon:
+        repo: fontawesome/brands/gitlab
+    features:
+        - search.highlight
+        - search.suggest
+        - navigation.tabs
+        - content.code.annotate
+        - content.tabs.link
+
+
 extra_css:
     - https://skyant.dev/static/css/skyant.css
     - https://skyant.dev/static/css/hide-title.css
@@ -68,8 +78,24 @@ plugins:
                 options:
                     show_source: true
                     show_root_full_path: false
-                    show_root_toc_entry: true
+                    show_root_toc_entry: false
                     show_bases: false
                     show_category_heading: false
     - search
     - section-index
+    - glightbox
+
+
+markdown_extensions:
+    - pymdownx.highlight:
+        anchor_linenums: true
+    - pymdownx.inlinehilite
+    - pymdownx.snippets
+    - pymdownx.superfences
+    - admonition
+    - pymdownx.details
+    - footnotes
+    - attr_list
+    - pymdownx.tabbed:
+        alternate_style: true 
+    - md_in_html

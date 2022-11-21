@@ -5,7 +5,7 @@ from os import environ as env
 from pathlib import Path
 
 import yaml
-from setuptools import find_packages, setup
+from setuptools import setup
 
 with open('./setup.yml', 'r', encoding='utf-8') as vars_file:
     conf = yaml.safe_load(vars_file)
@@ -38,7 +38,7 @@ if Path('README.md').is_file():
         kwargs['long_description'] = long_description
 
 
-def add_urls(key: str, alias: str = None) -> None:
+def add_urls(key: str, alias: str | None = None) -> None:
     '''
     Check env.yml & add value to project_urls.
     '''
