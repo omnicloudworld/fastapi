@@ -14,7 +14,7 @@ build-job:
         name:   GitLab
         action: prepare
     script:
-        -   if [[ "$CI_COMMIT_REF_NAME" == "main" ]]; then export BUILD_SUFIX=""; else export BUILD_SUFIX="dev"; fi;
+        -   if [[ "$CI_COMMIT_REF_NAME" == "main" ]]; then export BUILD_SUFFIX=""; else export BUILD_SUFFIX="dev"; fi;
         -   pip3 install --upgrade pip wheel build pyyaml markdown;
         -   python3 -m build --no-isolation .;
     artifacts:
@@ -57,3 +57,4 @@ deploy2pypi:
             --repository-url https://upload.pypi.org/legacy/ 
             --username __token__ 
             --password $PYPIORG_TOKEN dist/*
+

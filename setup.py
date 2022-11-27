@@ -12,7 +12,7 @@ with open('./setup.yml', 'r', encoding='utf-8') as vars_file:
 
 kwargs = {
     'name': f'{conf["NAMESPACE"].replace(".", "-")}',
-    'version': f'{conf["VERSION"]}.{env.get("BUILD_SUFIX", ".")}{env.get("CI_PIPELINE_IID", "0")}',
+    'version': f'{conf["VERSION"]}.{env.get("BUILD_SUFFIX", "")}{conf["MINOR"]}',
     'author': conf['AUTHOR'],
     'author_email': conf['EMAIL'],
     'description': conf['DESCR'],
