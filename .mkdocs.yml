@@ -84,6 +84,7 @@ plugins:
     - search
     - section-index
     - glightbox
+    - include-markdown
 
 
 markdown_extensions:
@@ -99,3 +100,6 @@ markdown_extensions:
     - pymdownx.tabbed:
         alternate_style: true 
     - md_in_html
+    - def_list
+    - pymdownx.tasklist:
+        custom_checkbox: true
