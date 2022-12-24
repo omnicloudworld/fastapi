@@ -4,17 +4,15 @@ MODULES:
     -   skyant.rest.app
 
 VERSION: 0.0
-MINOR: 1
+MINOR: 2
 
 DESCR: Preconfigured FastAPI
 KEYWORDS: fastapi, api, rest
 
 LICENSE: MIT
 
-HOME: https://skyant.dev/projects/rest
-DONATE: https://buymeacoffee.com/skyantdev
-NEWS: https://www.linkedin.com/company/skyantdev
-TALK: https://groups.google.com/a/skyant.dev/g/community?label=rest
+HOME: https://skyant.dev
+DOCUMENTATION: https://docs.skyant.dev/projects/rest
 
 
 AUTHOR: Iurii Tarasenko
