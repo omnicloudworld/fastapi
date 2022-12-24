@@ -4,7 +4,7 @@ MODULES:
     -   skyant.rest.app
 
 VERSION: 0.0
-MINOR: 2
+MINOR: 1-post
 
 DESCR: Preconfigured FastAPI
 KEYWORDS: fastapi, api, rest
