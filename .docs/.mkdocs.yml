@@ -8,7 +8,7 @@ nav:
         - 'app': references/app.md
 
 
-site_name: omnicloud-fastapi
+site_name: FastAPI in Omnicloud
 repo_url: https://github.com/omnicloudworld/fastapi
 repo_name: omnicloudworld/fastapi
 
